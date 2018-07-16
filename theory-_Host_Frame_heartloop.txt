@@ -1,0 +1,128 @@
+
+Location:
+
+main()
+-- Host_Frame ()
+---- _Host_Frame ()
+
+
+	_Host_Frame runs the server and client operations of the quake executable, 
+  along with taking input rendering and sound and more that I haven't figured out 
+  yet.
+
+static double		time1 = 0;
+static double		time2 = 0;
+static double		time3 = 0;
+
+	These variables appear to be used for "clocking speed of parts"
+	along with the time variable passed into _Host_Frame by Host_Frame
+
+int			pass1, pass2, pass3;
+
+	if host_speeds.value is nonzero then these are used
+
+// keep the random time dependent
+rand ()
+
+	Presumably a call to libc rand_r or random_r
+	Probably ensures that random values stay random
+
+if (!Host_FilterTime (time))
+return;
+
+	This appears to control how fast or the maximum speed that the renderer
+	can go at (oversimplication) and skips frame if it returns zero
+
+// get new key events
+Key_UpdateForDest ();
+IN_UpdateInputMode ();
+Sys_SendKeyEvents ();
+
+	This should handle the user typing a key and then send it to the client
+	in order to upload to server
+
+// allow mice or other external controllers to add commands
+IN_Commands ();
+
+	This should make the mouse work (should) it might have other ways in it
+
+// process console commands
+Cbuf_Execute ();
+
+	So file "theory-Command-Buffer-Cbuf"
+	  The command buffer is a array of strings followed by a \n that allows the
+	quake engine to dynamically execute commands, and the user can type in 
+	commands at	the dev console which are then added to the command buffer 
+
+	So it's operation would be detailed in the file function-command-buffer then
+
+NET_Poll();
+
+	"net" must be network
+
+//-------------------
+//
+// server operations
+//
+//-------------------
+
+// check for commands typed to the host
+Host_GetConsoleCommands ();
+if (sv.active)
+Host_ServerFrame ();
+
+	This runs the server. the server controls "how everything in the world is 
+	working"
+
+//-------------------
+//
+// client operations
+//
+//-------------------
+// if running the server remotely, send intentions now after
+// the incoming messages have been read
+	if (!sv.active)
+		CL_SendCmd ();
+
+// fetch results from server
+	if (cls.state == ca_connected)
+		CL_ReadFromServer ();
+
+// update video
+	if (host_speeds.value)
+		time1 = Sys_DoubleTime ();
+
+
+
+SCR_UpdateScreen
+
+	This is a central function.
+
+		It not only updates the screen but also draws it to the back buffer with
+	V_RenderView
+
+	V_RenderView contains
+		R_RenderView ()
+							which contains
+			R_RenderScene ()
+
+		which has multiple functions due to fitzquake and quakespasm refactor
+	which now "put most of it's functionality in that one function"
+
+	Updates the screen with 
+
+	GL_EndRendering ();
+		#if defined(USE_SDL2)
+			SDL_GL_SwapWindow(draw_context);
+		#else
+			SDL_GL_SwapBuffers();
+		#endif
+
+	Make a file detailing this function
+
+
+
+
+
+
+

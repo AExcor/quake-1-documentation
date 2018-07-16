@@ -2,3 +2,27 @@ I intended to have a first file before this one, but it was lost in a brower blu
 
 
   This file shows the "roots graph" for how Quakespasm renders the world, that is walls floors and cieling.
+
+main()
+-- Host_Frame ()
+---- _Host_Frame ()
+------ SCR_UpdateScreen ()
+-------- V_RenderView ()
+---------- R_RenderView ()
+------------ R_RenderView ()
+-------------- R_RenderScene ()
+---------------- R_DrawWorld ()
+------------------ R_DrawTextureChains ()
+-------- [Single-Pass Lightmapping using multiple textures per polygon]
+-------------------- R_DrawTextureChains_Multitexture () 
+---------------------- GL_MTexCoord2fFunc ()
+---------[Multi-Pass Lightmapping]
+-------------------- R_DrawTextureChains_TextureOnly ()
+---------------------- DrawGLPoly (GL_POLYGON)
+------------------------ glBegin ()
+------------------------ glTexCoord2f ()
+------------------------ glVertex3v ()
+------------------------ glEnd ()
+
+
+

@@ -1,0 +1,4 @@
+I intended to have a first file before this one, but it was lost in a brower blurp.
+
+
+  This file shows the "roots graph" for how Quakespasm renders the world, that is walls floors and cieling.

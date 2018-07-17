@@ -1,0 +1,115 @@
+# compile this code with this command, int the quakespasm directory with
+# all objects compiled
+# Made from the Quakespasm make file, this was coppied from what it generated
+# If it doesn't work on your machine then you can get quakespasm to generate
+# new code
+#
+# Removed objects
+#
+# main_sdl.o   \
+
+# Compile file to .o
+gcc  -DDEBUG -c -Wall -Wno-trigraphs  \
+-I/mint/package-libvorbisfile/installdir/include \
+-I/mint/package-libogg/installdir/include \
+-I/mint/package-libmad0/installdir/include \
+-g \
+-DUSE_CODEC_WAVE \
+-DUSE_CODEC_VORBIS  \
+-DUSE_CODEC_MP3 \
+-I/mint/package-libsdl1.2/installdir/include/SDL \
+-D_GNU_SOURCE=1 \
+-D_REENTRANT \
+-o 1-draw-world.o 1-draw-world.c
+
+# Generate binary
+gcc \
+strlcat.o \
+strlcpy.o \
+gl_refrag.o \
+gl_rlight.o \
+gl_rmain.o \
+gl_fog.o \
+gl_rmisc.o \
+r_part.o \
+r_world.o \
+gl_screen.o \
+gl_sky.o \
+gl_warp.o \
+gl_vidsdl.o \
+gl_draw.o \
+image.o \
+gl_texmgr.o \
+gl_mesh.o \
+r_sprite.o \
+r_alias.o \
+r_brush.o \
+gl_model.o \
+in_sdl.o \
+snd_dma.o \
+snd_mix.o \
+snd_mem.o \
+bgmusic.o \
+snd_codec.o \
+snd_flac.o \
+snd_wave.o \
+snd_vorbis.o \
+snd_opus.o \
+snd_mp3.o \
+snd_mikmod.o \
+snd_xmp.o \
+snd_umx.o \
+snd_sdl.o \
+cd_sdl.o \
+net_bsd.o \
+net_udp.o \
+net_dgrm.o \
+net_loop.o \
+net_main.o \
+chase.o \
+cl_demo.o \
+cl_input.o \
+cl_main.o \
+cl_parse.o \
+cl_tent.o \
+console.o \
+keys.o \
+menu.o \
+sbar.o \
+view.o \
+wad.o \
+cmd.o \
+common.o \
+crc.o \
+cvar.o \
+cfgfile.o \
+host.o \
+host_cmd.o \
+mathlib.o \
+pr_cmds.o \
+pr_edict.o \
+pr_exec.o \
+sv_main.o \
+sv_move.o \
+sv_phys.o \
+sv_user.o \
+world.o \
+zone.o \
+pl_linux.o \
+sys_sdl_unix.o \
+1-draw-world.o \
+-L/mint/package-libvorbisfile/installdir/lib \
+-L/mint/package-libogg/installdir/lib \
+-L/mint/package-libmad0/installdir/lib \
+-lm -lGL -lvorbisfile -lvorbis -logg -lmad \
+-L/mint/package-libsdl1.2/installdir/lib \
+-Wl,-rpath,/mint/package-libsdl1.2/installdir/lib \
+-lSDL \
+-o 1-draw-world
+
+
+
+
+
+
+

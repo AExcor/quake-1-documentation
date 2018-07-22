@@ -1,32 +1,30 @@
 Quakespasm is a heavily retooled version of glquake
 
-Glquake is a port of DosQuake (if that is it's name) to OpenGL made by Id Software (probably programmer John Carmack).
+    Glquake is a port of DosQuake (if that is it's name) to OpenGL made by Id Software 
+  (probably programmer John Carmack).
 
-This means that Quakespasm doesn't use SVGA anymore. Secondly Quakespasm is glquake only which means it doesn't carry
-over the software render. It also has multiple improvements and speedups to the quake engine and refactors alot of code
-such as the function GL_Blend (if that is the name of it).
+    This means that Quakespasm doesn't use SVGA anymore. Secondly Quakespasm is glquake 
+  only which means it doesn't carry over the software render. It also has multiple 
+  improvements and speedups to the quake engine and refactors alot of code such as the 
+  function GL_Blend (if that is the name of it).
 
-It also probably fixes that bug where the internal loop uses the same loop iterator variable as the one it is nested in,
-could probably figure out where that is. 
+    It also probably fixes that bug where the internal loop uses the same loop iterator 
+  variable as the one it is nested in, could probably figure out where that is. 
 
 Quakespasm is written in C (like all original quake)
 
-Id Software did not accept C++ until Id Tech 4 or Doom3 (doom3 engine was not called id tech 4 until later).
-
-Quakespasm uses SDL 1, and it has some info in there for SDL2 usage some #includes or #ifdefs or #ifndefs
-
-"CRC" appears to be a quick hashing algorithm like MD5 or SHA256 or 512 "for verifying maps of some kind"
-
+    Id Software did not accept C++ until Id Tech 4 or Doom3 (doom3 engine was not called 
+  id tech 4 until later). Quakespasm uses SDL 1, and it has some info in there for SDL2 
+  usage some #includes or #ifdefs or #ifndefs. "CRC" appears to be a quick hashing 
+  algorithm like MD5 or SHA256 or 512 "for verifying maps of some kind".
 
 1. Main function
 
-the main function is located in main_sdl.c. Original quake presumably doesn't have main_sdl so perhaps this was derived from 
-sdl quake or created by  quakespasm developer itself. Also quakespasm is derived from fitzquake, so it has "fitzquake emulation"
-mode if that is the name. 
+    the main function is located in main_sdl.c. Original quake presumably doesn't have
+  main_sdl so perhaps this was derived from sdl quake or created by  quakespasm developer 
+  itself. Also quakespasm is derived from fitzquake, so it has "fitzquake emulation" mode 
+  if that is the name. (figure out what version this is specifically documentating for)
 
-(figure out what version this is specifically documentating for)
-
-So the file "renderer.doc" will "focus first on the renderer", because that's what you see on the screen.
-
-So then "How it gets to the renderer from main"
+    So the file "renderer.doc" will "focus first on the renderer", because that's what you 
+  see on the screen. So then "How it gets to the renderer from main"
 
